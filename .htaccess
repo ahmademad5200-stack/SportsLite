@@ -15,10 +15,10 @@
     RewriteRule ^update-trainee/?$ BackEnd/api/v1/trainees/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-trainees/?$ BackEnd/api/v1/trainees/list.php [L,QSA]
+    RewriteRule ^list-trainee/?$ BackEnd/api/v1/trainees/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-trainees/?$ BackEnd/api/v1/trainees/search.php [L,QSA]
+    RewriteRule ^search-trainee/?$ BackEnd/api/v1/trainees/search.php [L,QSA]
 
 
     # ==========================================================
@@ -34,23 +34,24 @@
     RewriteRule ^update-trainer/?$ BackEnd/api/v1/trainers/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-trainers/?$ BackEnd/api/v1/trainers/list.php [L,QSA]
+    RewriteRule ^list-trainer/?$ BackEnd/api/v1/trainers/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-trainers/?$ BackEnd/api/v1/trainers/search.php [L,QSA]
+    RewriteRule ^search-trainer/?$ BackEnd/api/v1/trainers/search.php [L,QSA]
 
 
     # ==========================================================
     # 3. الملف الشخصي (Auth/Profile) - 3 عمليات (لا يوجد بحث وعرض للكل هنا)
     # ==========================================================
-    RewriteCond %{REQUEST_METHOD} DELETE
-    RewriteRule ^delete-account/?$ BackEnd/api/v1/auth/delete_account.php [L,QSA]
-
-    RewriteCond %{REQUEST_METHOD} PUT
-    RewriteRule ^update-profile/?$ BackEnd/api/v1/auth/update_profile.php [L,QSA]
-
-    RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^profile/?$ BackEnd/api/v1/auth/profile.php [L,QSA]
+    # --- Auth Routes ---
+    # 1. Auth Routes
+    RewriteRule ^auth/register$ BackEnd/api/v1/auth/register.php [L]
+    RewriteRule ^auth/login$ BackEnd/api/v1/auth/login.php [L]
+    
+    RewriteRule ^auth/profile$ BackEnd/api/v1/auth/profile.php [L]
+    RewriteRule ^auth/logout$ BackEnd/api/v1/auth/logout.php [L]
+    RewriteRule ^auth/reset-password$ BackEnd/api/v1/auth/reset_password.php [L]
+    RewriteRule ^auth/verify-token$ BackEnd/api/v1/auth/verify_token.php [L]
 
 
     # ==========================================================
@@ -94,20 +95,11 @@
     # ==========================================================
     # 6. خطط الاشتراك (Subscription Plans) - 5 عمليات
     # ==========================================================
-    RewriteCond %{REQUEST_METHOD} DELETE
-    RewriteRule ^delete-plan/?$ BackEnd/api/v1/subscription_plans/delete.php [L,QSA]
-
-    RewriteCond %{REQUEST_METHOD} POST
-    RewriteRule ^create-plan/?$ BackEnd/api/v1/subscription_plans/create.php [L,QSA]
-
-    RewriteCond %{REQUEST_METHOD} PUT
-    RewriteRule ^update-plan/?$ BackEnd/api/v1/subscription_plans/update.php [L,QSA]
-
-    RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-plans/?$ BackEnd/api/v1/subscription_plans/list.php [L,QSA]
-
-    RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-plans/?$ BackEnd/api/v1/subscription_plans/search.php [L,QSA]
+    RewriteRule ^create-plan$ BackEnd/api/v1/subscription_plans/create.php [L]
+    RewriteRule ^list-plan$ BackEnd/api/v1/subscription_plans/list.php [L]
+    RewriteRule ^search-plan$ BackEnd/api/v1/subscription_plans/search.php [L]
+    RewriteRule ^update-plan$ BackEnd/api/v1/subscription_plans/update.php [L]
+    RewriteRule ^delete-plan$ BackEnd/api/v1/subscription_plans/delete.php [L]
 
 
     # ==========================================================
@@ -142,10 +134,10 @@
     RewriteRule ^update-training-program/?$ BackEnd/api/v1/training_programs/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-training-programs/?$ BackEnd/api/v1/training_programs/list.php [L,QSA]
+    RewriteRule ^list-training-program/?$ BackEnd/api/v1/training_programs/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-training-programs/?$ BackEnd/api/v1/training_programs/search.php [L,QSA]
+    RewriteRule ^search-training-program/?$ BackEnd/api/v1/training_programs/search.php [L,QSA]
 
 
     # ==========================================================
@@ -161,10 +153,10 @@
     RewriteRule ^update-news-category/?$ BackEnd/api/v1/news_categories/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-news-categories/?$ BackEnd/api/v1/news_categories/list.php [L,QSA]
+    RewriteRule ^list-news-category/?$ BackEnd/api/v1/news_categories/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-news-categories/?$ BackEnd/api/v1/news_categories/search.php [L,QSA]
+    RewriteRule ^search-news-category/?$ BackEnd/api/v1/news_categories/search.php [L,QSA]
 
 
     # ==========================================================
@@ -180,10 +172,10 @@
     RewriteRule ^update-feature/?$ BackEnd/api/v1/plan_features/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-features/?$ BackEnd/api/v1/plan_features/list.php [L,QSA]
+    RewriteRule ^list-feature/?$ BackEnd/api/v1/plan_features/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-features/?$ BackEnd/api/v1/plan_features/search.php [L,QSA]
+    RewriteRule ^search-feature/?$ BackEnd/api/v1/plan_features/search.php [L,QSA]
 
 
     # ==========================================================
@@ -195,7 +187,7 @@
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^create-booking/?$ BackEnd/api/v1/bookings/create.php [L,QSA]
 
-    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^update-booking/?$ BackEnd/api/v1/bookings/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
@@ -218,10 +210,10 @@
     RewriteRule ^update-trainee-program/?$ BackEnd/api/v1/trainee_programs/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-trainee-programs/?$ BackEnd/api/v1/trainee_programs/list.php [L,QSA]
+    RewriteRule ^list-trainee-program/?$ BackEnd/api/v1/trainee_programs/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-trainee-programs/?$ BackEnd/api/v1/trainee_programs/search.php [L,QSA]
+    RewriteRule ^search-trainee-program/?$ BackEnd/api/v1/trainee_programs/search.php [L,QSA]
 
 
     # ==========================================================
@@ -257,10 +249,10 @@
     RewriteRule ^update-review/?$ BackEnd/api/v1/reviews/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-reviews/?$ BackEnd/api/v1/reviews/list.php [L,QSA]
+    RewriteRule ^list-review/?$ BackEnd/api/v1/reviews/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-reviews/?$ BackEnd/api/v1/reviews/search.php [L,QSA]
+    RewriteRule ^search-review/?$ BackEnd/api/v1/reviews/search.php [L,QSA]
 
     # رسائل تواصل معنا (Messages)
     RewriteCond %{REQUEST_METHOD} DELETE
@@ -273,9 +265,16 @@
     RewriteRule ^update-message/?$ BackEnd/api/v1/messages/update.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^list-messages/?$ BackEnd/api/v1/messages/list.php [L,QSA]
+    RewriteRule ^list-message/?$ BackEnd/api/v1/messages/list.php [L,QSA]
 
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^search-messages/?$ BackEnd/api/v1/messages/search.php [L,QSA]
+    RewriteRule ^search-message/?$ BackEnd/api/v1/messages/search.php [L,QSA]
+
+    # Payments Clean Routes
+    RewriteRule ^create-payment$ BackEnd/api/v1/payments/create.php [L]
+    RewriteRule ^list-payments$ BackEnd/api/v1/payments/list.php [L]
+    RewriteRule ^update-payment$ BackEnd/api/v1/payments/update.php [L]
+    RewriteRule ^delete-payment$ BackEnd/api/v1/payments/delete.php [L]
+    RewriteRule ^search-payments$ BackEnd/api/v1/payments/search.php [L]
 
 </IfModule>

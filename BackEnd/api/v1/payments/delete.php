@@ -15,21 +15,26 @@ try {
     if(!isset($input->id)){
         response(400, "Bad request: 'id' is required");
     }
+
     $id = $input->id;
 
-    $check = $pdo->prepare("SELECT `id` FROM `bookings` WHERE `id` = :id");
-    $check->execute([':id' => $id]);
+    $select_query = "SELECT `id` FROM `payments` WHERE `id` = :id";
+    $check = $pdo->prepare($select_query);
+    $check->bindParam(':id', $id, PDO::PARAM_INT);
+    $check->execute();
 
     if($check->rowCount() === 0){
-        response(404, "Booking not found!");
+        response(404, "Bad request: payment not found!");
     }
 
-    $delete_query = "DELETE FROM `bookings` WHERE `id` = :id";
+    $delete_query = "DELETE FROM `payments` WHERE `id` = :id";
     $delete_stmnt = $pdo->prepare($delete_query);
-    if($delete_stmnt->execute([':id' => $id])){
-        response(200, "booking deleted successfully.");
+    $delete_stmnt->bindParam(':id', $id, PDO::PARAM_INT);
+    
+    if($delete_stmnt->execute()){
+        response(200, "Payment deleted successfully.");
     } else {
-        response(503, "Unable to delete the booking");
+        response(503, "Unable to delete the payment");
     }
 } catch (Exception $e) {
     response(500, "server error: " . $e->getMessage());
