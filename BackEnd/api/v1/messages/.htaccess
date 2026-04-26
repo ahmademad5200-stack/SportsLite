@@ -1,0 +1,280 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    Options -MultiViews
+
+    # ==========================================================
+    # 1. قسم المتدربين (Trainees) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-trainee/?$ BackEnd/api/v1/trainees/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-trainee/?$ BackEnd/api/v1/trainees/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-trainee/?$ BackEnd/api/v1/trainees/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-trainee/?$ BackEnd/api/v1/trainees/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-trainee/?$ BackEnd/api/v1/trainees/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 2. قسم المدربين (Trainers) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-trainer/?$ BackEnd/api/v1/trainers/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-trainer/?$ BackEnd/api/v1/trainers/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-trainer/?$ BackEnd/api/v1/trainers/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-trainer/?$ BackEnd/api/v1/trainers/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-trainer/?$ BackEnd/api/v1/trainers/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 3. الملف الشخصي (Auth/Profile) - 3 عمليات (لا يوجد بحث وعرض للكل هنا)
+    # ==========================================================
+    # --- Auth Routes ---
+    # 1. Auth Routes
+    RewriteRule ^auth/register$ BackEnd/api/v1/auth/register.php [L]
+    RewriteRule ^auth/login$ BackEnd/api/v1/auth/login.php [L]
+    
+    RewriteRule ^auth/profile$ BackEnd/api/v1/auth/profile.php [L]
+    RewriteRule ^auth/logout$ BackEnd/api/v1/auth/logout.php [L]
+    RewriteRule ^auth/reset-password$ BackEnd/api/v1/auth/reset_password.php [L]
+    RewriteRule ^auth/verify-token$ BackEnd/api/v1/auth/verify_token.php [L]
+
+
+    # ==========================================================
+    # 4. قسم المعدات (Equipment) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-equipment/?$ BackEnd/api/v1/equipment/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-equipment/?$ BackEnd/api/v1/equipment/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-equipment/?$ BackEnd/api/v1/equipment/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-equipment/?$ BackEnd/api/v1/equipment/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-equipment/?$ BackEnd/api/v1/equipment/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 5. قسم الأخبار (News) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-news/?$ BackEnd/api/v1/news/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-news/?$ BackEnd/api/v1/news/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-news/?$ BackEnd/api/v1/news/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-news/?$ BackEnd/api/v1/news/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-news/?$ BackEnd/api/v1/news/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 6. خطط الاشتراك (Subscription Plans) - 5 عمليات
+    # ==========================================================
+    RewriteRule ^create-plan$ BackEnd/api/v1/subscription_plans/create.php [L]
+    RewriteRule ^list-plan$ BackEnd/api/v1/subscription_plans/list.php [L]
+    RewriteRule ^search-plan$ BackEnd/api/v1/subscription_plans/search.php [L]
+    RewriteRule ^update-plan$ BackEnd/api/v1/subscription_plans/update.php [L]
+    RewriteRule ^delete-plan$ BackEnd/api/v1/subscription_plans/delete.php [L]
+
+
+    # ==========================================================
+    # 7. الفروع والصالات (Branches) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-branch/?$ BackEnd/api/v1/branches/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-branch/?$ BackEnd/api/v1/branches/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-branch/?$ BackEnd/api/v1/branches/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-branches/?$ BackEnd/api/v1/branches/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-branches/?$ BackEnd/api/v1/branches/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 8. برامج التدريب العامة (Training Programs) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-training-program/?$ BackEnd/api/v1/training_programs/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-training-program/?$ BackEnd/api/v1/training_programs/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-training-program/?$ BackEnd/api/v1/training_programs/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-training-program/?$ BackEnd/api/v1/training_programs/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-training-program/?$ BackEnd/api/v1/training_programs/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 9. أصناف الأخبار (News Categories) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-news-category/?$ BackEnd/api/v1/news_categories/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-news-category/?$ BackEnd/api/v1/news_categories/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-news-category/?$ BackEnd/api/v1/news_categories/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-news-category/?$ BackEnd/api/v1/news_categories/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-news-category/?$ BackEnd/api/v1/news_categories/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 10. ميزات الباقات (Plan Features) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-feature/?$ BackEnd/api/v1/plan_features/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-feature/?$ BackEnd/api/v1/plan_features/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-feature/?$ BackEnd/api/v1/plan_features/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-feature/?$ BackEnd/api/v1/plan_features/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-feature/?$ BackEnd/api/v1/plan_features/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 11. الحجوزات (Bookings) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-booking/?$ BackEnd/api/v1/bookings/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-booking/?$ BackEnd/api/v1/bookings/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^update-booking/?$ BackEnd/api/v1/bookings/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-bookings/?$ BackEnd/api/v1/bookings/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-bookings/?$ BackEnd/api/v1/bookings/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 12. برامج المتدربين المخصصة (Trainee Programs) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-trainee-program/?$ BackEnd/api/v1/trainee_programs/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-trainee-program/?$ BackEnd/api/v1/trainee_programs/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-trainee-program/?$ BackEnd/api/v1/trainee_programs/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-trainee-program/?$ BackEnd/api/v1/trainee_programs/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-trainee-program/?$ BackEnd/api/v1/trainee_programs/search.php [L,QSA]
+
+
+    # ==========================================================
+    # 13. الأنظمة الغذائية (Diet Plans) - 5 عمليات
+    # ==========================================================
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-diet/?$ BackEnd/api/v1/programs/delete_diet.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-diet/?$ BackEnd/api/v1/programs/create_diet.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-diet/?$ BackEnd/api/v1/programs/update_diet.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-diets/?$ BackEnd/api/v1/programs/list_diet.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-diets/?$ BackEnd/api/v1/programs/search_diet.php [L,QSA]
+
+
+    # ==========================================================
+    # 14. التقييمات وتواصل معنا (Reviews & Messages) - 5 عمليات لكل منها
+    # ==========================================================
+    # التقييمات (Reviews)
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-review/?$ BackEnd/api/v1/reviews/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-review/?$ BackEnd/api/v1/reviews/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-review/?$ BackEnd/api/v1/reviews/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-review/?$ BackEnd/api/v1/reviews/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-review/?$ BackEnd/api/v1/reviews/search.php [L,QSA]
+
+    # رسائل تواصل معنا (Messages)
+    RewriteCond %{REQUEST_METHOD} DELETE
+    RewriteRule ^delete-message/?$ BackEnd/api/v1/messages/delete.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} POST
+    RewriteRule ^create-message/?$ BackEnd/api/v1/messages/create.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} PUT
+    RewriteRule ^update-message/?$ BackEnd/api/v1/messages/update.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^list-message/?$ BackEnd/api/v1/messages/list.php [L,QSA]
+
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteRule ^search-message/?$ BackEnd/api/v1/messages/search.php [L,QSA]
+
+    # Payments Clean Routes
+    RewriteRule ^create-payment$ BackEnd/api/v1/payments/create.php [L]
+    RewriteRule ^list-payments$ BackEnd/api/v1/payments/list.php [L]
+    RewriteRule ^update-payment$ BackEnd/api/v1/payments/update.php [L]
+    RewriteRule ^delete-payment$ BackEnd/api/v1/payments/delete.php [L]
+    RewriteRule ^search-payments$ BackEnd/api/v1/payments/search.php [L]
+
+</IfModule>
