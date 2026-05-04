@@ -1,9 +1,13 @@
 <?php
 require_once "../Helpers/headers.php";
-send_json_api_headers('POST');
+send_json_api_headers('PUT');
 
 require_once "../config/conn.php";
 require_once "../Helpers/response.php";
+
+if ($_SERVER["REQUEST_METHOD"] !== "PUT") {
+    response(405, "Only PUT Method is allowed");
+}
 
 $input = json_decode(file_get_contents("php://input"));
 
