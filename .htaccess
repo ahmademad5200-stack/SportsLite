@@ -6,7 +6,7 @@
     # 1. Trainees Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/trainees/$ api/v1/trainees/list.php [L]
+    RewriteRule ^api/v1/trainees/$ api/v1/trainees/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/trainees/$ api/v1/trainees/create.php [L]
@@ -25,7 +25,7 @@
     # 2. Trainers Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/trainers/$ api/v1/trainers/list.php [L]
+    RewriteRule ^api/v1/trainers/$ api/v1/trainers/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/trainers/$ api/v1/trainers/create.php [L]
@@ -55,7 +55,7 @@
     # 4. Equipment Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/equipment/$ api/v1/equipment/list.php [L]
+    RewriteRule ^api/v1/equipment/$ api/v1/equipment/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/equipment/$ api/v1/equipment/create.php [L]
@@ -74,7 +74,7 @@
     # 5. News Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/news/$ api/v1/news/list.php [L]
+    RewriteRule ^api/v1/news/$ api/v1/news/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/news/$ api/v1/news/create.php [L]
@@ -93,7 +93,7 @@
     # 6. Subscription Plans Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/subscription_plans/$ api/v1/subscription_plans/list.php [L]
+    RewriteRule ^api/v1/subscription_plans/$ api/v1/subscription_plans/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/subscription_plans/$ api/v1/subscription_plans/create.php [L]
@@ -112,7 +112,7 @@
     # 7. Branches Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/branches/$ api/v1/branches/list.php [L]
+    RewriteRule ^api/v1/branches/$ api/v1/branches/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/branches/$ api/v1/branches/create.php [L]
@@ -131,7 +131,7 @@
     # 8. Training Programs Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/training_programs/$ api/v1/training_programs/list.php [L]
+    RewriteRule ^api/v1/training_programs/$ api/v1/training_programs/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/training_programs/$ api/v1/training_programs/create.php [L]
@@ -150,7 +150,7 @@
     # 9. News Categories Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/news_categories/$ api/v1/news_categories/list.php [L]
+    RewriteRule ^api/v1/news_categories/$ api/v1/news_categories/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/news_categories/$ api/v1/news_categories/create.php [L]
@@ -169,7 +169,7 @@
     # 10. Plan Features Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/plan_features/$ api/v1/plan_features/list.php [L]
+    RewriteRule ^api/v1/plan_features/$ api/v1/plan_features/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/plan_features/$ api/v1/plan_features/create.php [L]
@@ -188,7 +188,7 @@
     # 11. Bookings Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/bookings/$ api/v1/bookings/list.php [L]
+    RewriteRule ^api/v1/bookings/$ api/v1/bookings/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/bookings/$ api/v1/bookings/create.php [L]
@@ -207,7 +207,7 @@
     # 12. Trainee Programs Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/trainee_programs/$ api/v1/trainee_programs/list.php [L]
+    RewriteRule ^api/v1/trainee_programs/$ api/v1/trainee_programs/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/trainee_programs/$ api/v1/trainee_programs/create.php [L]
@@ -226,7 +226,7 @@
     # 13. Diet Plans Clean Routes (ملفات مخصصة)
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/diets/$ api/v1/programs/list_diet.php [L]
+    RewriteRule ^api/v1/diets/$ api/v1/programs/index_diet.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/diets/$ api/v1/programs/create_diet.php [L]
@@ -245,7 +245,7 @@
     # 14. Reviews Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/reviews/$ api/v1/reviews/list.php [L]
+    RewriteRule ^api/v1/reviews/$ api/v1/reviews/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/reviews/$ api/v1/reviews/create.php [L]
@@ -264,7 +264,7 @@
     # 15. Messages Clean Routes
     # ==========================================================
     RewriteCond %{REQUEST_METHOD} GET
-    RewriteRule ^api/v1/messages/$ api/v1/messages/list.php [L]
+    RewriteRule ^api/v1/messages/$ api/v1/messages/index.php [L]
 
     RewriteCond %{REQUEST_METHOD} POST
     RewriteRule ^api/v1/messages/$ api/v1/messages/create.php [L]
