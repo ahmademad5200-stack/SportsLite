@@ -5,29 +5,43 @@ send_json_api_headers('POST');
 require_once "../config/conn.php";
 require_once "../Helpers/response.php";
 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    response(405, "Only POST Method is allowed");
+}
+
 $input = json_decode(file_get_contents("php://input"));
 
 try {
-    if (empty($input->full_name)) {
-        response(400, "Full name is required");
+    // الحقول المطلوبة بناءً على طبيعة الجدول
+    if(!isset($input->name) || !isset($input->years_of_experience) || !isset($input->specialization)){
+        response(400, "Bad request: 'name', 'years_of_experience', and 'specialization' are required");
     }
 
-    // تم حذف branch_id لأن الجدول لا يحتويه حسب الصور
-    $sql = "INSERT INTO trainers (name, years_of_experience, rating, specialization, gender) 
-            VALUES (:name, :exp, :rating, :spec, :gender)";
-    
-    $stmt = $pdo->prepare($sql);
-    
-    $stmt->execute([
-        ':name'   => $input->full_name,
-        ':exp'    => $input->experience_years ?? 0,
-        ':rating' => $input->rating ?? 0.0,
-        ':spec'   => $input->specialization ?? '',
-        ':gender' => $input->gender ?? 'Male'
-    ]);
+    $name = $input->name;
+    $experience = $input->years_of_experience;
+    $specialization = $input->specialization;
+    $rating = isset($input->rating) ? $input->rating : 0.00;
+    $image_path = isset($input->image_path) ? $input->image_path : null;
+    $description = isset($input->description) ? $input->description : null;
+    $gender = isset($input->gender) ? $input->gender : 'Male';
 
-    response(201, "Trainer created successfully", ["id" => $pdo->lastInsertId()]);
+    $query = "INSERT INTO trainers (name, years_of_experience, rating, image_path, description, specialization, gender) 
+              VALUES (:name, :experience, :rating, :img, :descr, :spec, :gender)";
+    
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':experience', $experience, PDO::PARAM_INT);
+    $stmt->bindParam(':rating', $rating);
+    $stmt->bindParam(':img', $image_path);
+    $stmt->bindParam(':descr', $description);
+    $stmt->bindParam(':spec', $specialization);
+    $stmt->bindParam(':gender', $gender);
 
-} catch (PDOException $e) {
+    if($stmt->execute()){
+        response(200, "Trainer added successfully.", ["id" => $pdo->lastInsertId()]);
+    } else {
+        response(503, "Unable to add trainer");
+    }
+} catch (Exception $e) {
     response(500, "Server error: " . $e->getMessage());
 }
